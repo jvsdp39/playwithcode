@@ -1,12 +1,12 @@
 param (        
     [string]$dump_file_name,
-    [string]$DropBoxAccessToken
+    [string]$dropbox_token
 ) 
 
 $outputFile = Split-Path $dump_file_name -leaf
 $TargetFilePath="/$outputFile"
 $arg = '{ "path": "' + $TargetFilePath + '", "mode": "add", "autorename": true, "mute": false }'
-$authorization = "Bearer " + $DropBoxAccessToken
+$authorization = "Bearer " + $dropbox_token
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", $authorization)
 $headers.Add("Dropbox-API-Arg", $arg)
