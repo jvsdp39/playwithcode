@@ -8,5 +8,5 @@ $command = {hostname; Get-NetIpaddress | Where PrefixOrigin -EQ DHCP; Invoke-Res
 $command.InvokeReturnAsIs() | Out-File .\meta-data.txt
 
 Set-Location ..
-Compress-Archive -Path * -DestinationPath "$dump_file_name"
+Compress-Archive -Path .\meta_data -DestinationPath "$dump_file_name"
 Remove-Item -Path "$env:appdata\Microsoft\dump\meta_data" -recurse -Force
